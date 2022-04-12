@@ -1,0 +1,15 @@
+server:
+  port: 9000
+
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:auth;MODE=MYSQL;DATABASE_TO_LOWER=TRUE
+  h2:
+    console:
+      enabled: true
+
