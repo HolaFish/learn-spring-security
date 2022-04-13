@@ -1,0 +1,5 @@
+
+auth:
+  server:
+    base:
+      url: http://localhost:9000
