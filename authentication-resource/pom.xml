@@ -37,9 +37,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.fxsh.learn</groupId>
-            <artifactId>base</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
         <!-- JWT 相关依赖 -->
         <dependency>

@@ -3,3 +3,8 @@ auth:
   server:
     base:
       url: http://localhost:9000
+jwt:
+  signing:
+    key: giveyousomecolerseseandyouloughthaha
+server:
+  port: 8080

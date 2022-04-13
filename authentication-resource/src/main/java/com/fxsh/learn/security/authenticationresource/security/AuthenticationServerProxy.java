@@ -1,6 +1,6 @@
 package com.fxsh.learn.security.authenticationresource.security;
 
-import com.fxsh.learn.security.base.domain.User;
+import com.fxsh.learn.security.authenticationresource.pojo.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;

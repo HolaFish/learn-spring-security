@@ -3,6 +3,7 @@ package com.fxsh.learn.security.authenticationresource.security;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.apache.logging.log4j.util.Strings;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,16 +19,15 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
-@Component
 public class InitialAuthenticationFilter extends OncePerRequestFilter {
-
     private final AuthenticationManager authenticationManager;
-    @Value("${jwt.signing.key}")
-    private String signingKey;
 
     public InitialAuthenticationFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
     }
+
+    @Value("${jwt.signing.key}")
+    private String signingKey;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -52,11 +52,16 @@ public class InitialAuthenticationFilter extends OncePerRequestFilter {
                 .signWith(key)
                 .compact();
         response.setHeader("Authorization",jwt);
+        /**
+         * 这里不继续执行过滤器链是因为：
+         * 这个过滤器是处理/login请求的，在这一步登陆动作就已经完成了
+         * todo 登陆成功后返回成功信息
+         */
     }
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
-        // login 不过滤
+        // 只有/login会被该过滤器处理
         return !request.getServletPath().equals("/login");
     }
 }

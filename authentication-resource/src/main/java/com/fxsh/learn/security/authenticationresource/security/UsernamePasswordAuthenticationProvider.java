@@ -1,6 +1,6 @@
 package com.fxsh.learn.security.authenticationresource.security;
 
-import com.fxsh.learn.security.base.domain.User;
+import com.fxsh.learn.security.authenticationresource.pojo.User;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
