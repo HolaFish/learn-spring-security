@@ -33,11 +33,11 @@ public class InitialAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String username = request.getHeader("userName");
         String password = request.getHeader("password");
-        if (Strings.isBlank(username) || Strings.isBlank(password)){
+        if (Strings.isBlank(username) || Strings.isBlank(password)) {
             response.setStatus(HttpStatus.UNAUTHORIZED.value());
             return;
         }
-        UsernamePasswordAuthentication authentication = new UsernamePasswordAuthentication(username,password);
+        UsernamePasswordAuthentication authentication = new UsernamePasswordAuthentication(username, password);
         /**
          * 委托给身份验证管理器，进行身份验证
          */
@@ -48,10 +48,10 @@ public class InitialAuthenticationFilter extends OncePerRequestFilter {
          */
         SecretKey key = Keys.hmacShaKeyFor(signingKey.getBytes(StandardCharsets.UTF_8));
         String jwt = Jwts.builder()
-                .setClaims(Map.of("username",username))
+                .setClaims(Map.of("username", username))
                 .signWith(key)
                 .compact();
-        response.setHeader("Authorization",jwt);
+        response.setHeader("Authorization", jwt);
         /**
          * 这里不继续执行过滤器链是因为：
          * 这个过滤器是处理/login请求的，在这一步登陆动作就已经完成了

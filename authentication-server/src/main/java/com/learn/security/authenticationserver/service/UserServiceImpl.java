@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -24,14 +24,14 @@ public class UserServiceImpl implements UserService{
     @Override
     public void auth(User user) {
         Optional<User> o = userRepository.findByUsername(user.getUsername());
-        if (o.isPresent()){
+        if (o.isPresent()) {
             User u = o.get();
-            if(passwordEncoder.matches(user.getPassword(),u.getPassword())){
+            if (passwordEncoder.matches(user.getPassword(), u.getPassword())) {
                 // 验证成功
-            }else{
+            } else {
                 throw new BadCredentialsException("Bad credentials");
             }
-        }else{
+        } else {
             throw new BadCredentialsException("Bad credentials");
         }
     }

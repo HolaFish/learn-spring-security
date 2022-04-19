@@ -46,6 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      */
     /**
      * 配置用户管理器和密码编码器
+     *
      * @param auth
      * @throws Exception
      */

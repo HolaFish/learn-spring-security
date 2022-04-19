@@ -12,6 +12,7 @@ public class UsernamePasswordAuthentication extends UsernamePasswordAuthenticati
 
     /**
      * 创建正在验证的Token
+     *
      * @param principal
      * @param credentials
      */
@@ -21,6 +22,7 @@ public class UsernamePasswordAuthentication extends UsernamePasswordAuthenticati
 
     /**
      * 创建已通过验证的Token
+     *
      * @param principal
      * @param credentials
      * @param authorities

@@ -3,6 +3,7 @@ package com.fxsh.learn.springsecurity.security;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
 import java.util.List;
 
 /**
@@ -13,6 +14,7 @@ public class InMemoryUserDetailService implements UserDetailsService {
 
     /**
      * 初始化时确定用户列表
+     *
      * @param users
      */
     public InMemoryUserDetailService(List<UserDetails> users) {
@@ -21,6 +23,7 @@ public class InMemoryUserDetailService implements UserDetailsService {
 
     /**
      * 唯一的职责就是根据用户名获取UserDetail
+     *
      * @param username
      * @return
      * @throws UsernameNotFoundException
@@ -29,6 +32,6 @@ public class InMemoryUserDetailService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return users.stream().filter(userDetails -> userDetails.getUsername().equals(username))
                 .findFirst()
-                .orElseThrow(()-> new UsernameNotFoundException("User not found"));
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 }

@@ -20,10 +20,11 @@ public class UserManagerConfig {
 
     /**
      * 配置自定义用户管理服务
+     *
      * @return
      */
     @Bean
-    public UserDetailsService userDetailsService(){
+    public UserDetailsService userDetailsService() {
         /**
          * 1：使用自定义的内存中用户管理服务
          */
@@ -44,10 +45,11 @@ public class UserManagerConfig {
     /**
      * 配置密码编码器
      * <br>
+     *
      * @return
      */
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
     }
 }

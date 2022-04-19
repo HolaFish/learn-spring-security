@@ -22,10 +22,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
         this.usernamePasswordAuthenticationProvider = usernamePasswordAuthenticationProvider;
     }
+
     @Bean
     public InitialAuthenticationFilter initialAuthenticationFilter() throws Exception {
         return new InitialAuthenticationFilter(authenticationManager());
     }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(usernamePasswordAuthenticationProvider); // 身份验证提供程序
@@ -36,13 +38,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http.addFilterAt(initialAuthenticationFilter(), BasicAuthenticationFilter.class)
-                .addFilterAfter(jwtAuthenticationFilter,BasicAuthenticationFilter.class);
+                .addFilterAfter(jwtAuthenticationFilter, BasicAuthenticationFilter.class);
         http.authorizeHttpRequests()
                 .anyRequest().authenticated(); //所有请求都需要被验证
     }
 
     /**
      * 将身份认证管理器添加到Spring的管理中
+     *
      * @return
      * @throws Exception
      */

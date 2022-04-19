@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
+
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
@@ -25,6 +26,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     /**
      * 自定义验证逻辑
+     *
      * @param authentication
      * @return
      * @throws AuthenticationException
@@ -45,15 +47,16 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         String username = authentication.getName();
         String password = String.valueOf(authentication.getCredentials());
         var user = userDetailsService.loadUserByUsername(username);
-        if(passwordEncoder.matches(password,user.getPassword())){
-            return new UsernamePasswordAuthenticationToken(username,password, user.getAuthorities());
-        }else {
+        if (passwordEncoder.matches(password, user.getPassword())) {
+            return new UsernamePasswordAuthenticationToken(username, password, user.getAuthorities());
+        } else {
             throw new BadCredentialsException("Bad Credentials");
         }
     }
 
     /**
      * 验证该验证提供器是否支持当前的身份验证事件<code>Authentication</code>
+     *
      * @param authentication
      * @return
      */

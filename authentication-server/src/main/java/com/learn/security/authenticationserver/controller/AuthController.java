@@ -18,12 +18,13 @@ public class AuthController {
     public AuthController(UserService userDetailsService) {
         this.userService = userDetailsService;
     }
+
     @PostMapping
-    public void auth(@RequestBody User user, HttpServletResponse response){
-        try{
+    public void auth(@RequestBody User user, HttpServletResponse response) {
+        try {
             userService.auth(user);
             response.setStatus(HttpServletResponse.SC_OK);
-        }catch (Exception e){
+        } catch (Exception e) {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
         }
     }

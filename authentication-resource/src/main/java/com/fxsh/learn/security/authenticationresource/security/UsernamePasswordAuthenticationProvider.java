@@ -23,12 +23,12 @@ public class UsernamePasswordAuthenticationProvider implements AuthenticationPro
         var user = new User();
         user.setUsername(username);
         user.setPassword(password);
-        if(this.proxy.auth(user)){
+        if (this.proxy.auth(user)) {
             /**
              * 提供用户的密码，供身份验证管理器验证
              */
-            return new UsernamePasswordAuthentication(username,password);
-        }else{
+            return new UsernamePasswordAuthentication(username, password);
+        } else {
             throw new BadCredentialsException("Bad Credentials");
         }
 

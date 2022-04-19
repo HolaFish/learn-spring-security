@@ -6,6 +6,7 @@ public interface UserService {
 
     /**
      * 验证用户名与密码
+     *
      * @param user
      */
     void auth(User user);

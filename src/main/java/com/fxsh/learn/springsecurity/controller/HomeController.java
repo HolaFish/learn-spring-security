@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class HomeController {
     @GetMapping("greeting")
-    public String greeting(Authentication authentication){
+    public String greeting(Authentication authentication) {
         return "Hello :\n" + authentication;
     }
 }

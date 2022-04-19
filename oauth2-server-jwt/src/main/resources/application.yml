@@ -1,0 +1,7 @@
+jwt:
+  key: longtimenoseehowareyouimokandyou
+
+key:
+  password: Touch@123
+  privateKey: touchDev.jks
+  alias: touch

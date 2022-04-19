@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 @Configuration
 public class UserManageConfig {
 
@@ -13,10 +14,11 @@ public class UserManageConfig {
 
     /**
      * 密码编码器
+     *
      * @return
      */
     @Bean
-    public PasswordEncoder passwordEncoder(){
-        return  NoOpPasswordEncoder.getInstance();
+    public PasswordEncoder passwordEncoder() {
+        return NoOpPasswordEncoder.getInstance();
     }
 }

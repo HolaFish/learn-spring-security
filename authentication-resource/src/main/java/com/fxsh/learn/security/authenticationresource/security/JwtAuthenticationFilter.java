@@ -26,10 +26,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Value("${jwt.signing.key}")
     private String signingKey;
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String jwt = request.getHeader("Authorization");
-        if(Strings.isBlank(jwt)){
+        if (Strings.isBlank(jwt)) {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             return;
         }
@@ -42,14 +43,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         String username = String.valueOf(claims.get("username"));
         // todo 获取用户的真实权限列表
         var authority = new SimpleGrantedAuthority("Admin");
-        var token = new UsernamePasswordAuthentication(username,null, Arrays.asList(authority));
+        var token = new UsernamePasswordAuthentication(username, null, Arrays.asList(authority));
 
         /**
          * 将当前用户放入上下文中
          */
         var context = SecurityContextHolder.getContext();
         context.setAuthentication(token);
-        filterChain.doFilter(request,response);
+        filterChain.doFilter(request, response);
     }
 
     @Override

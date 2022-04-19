@@ -1,0 +1,22 @@
+jwt:
+  key: longtimenoseehowareyouimokandyou
+server:
+  port: 8081
+key:
+  public: -----BEGIN PUBLIC KEY-----
+    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAugegNTMgPAT6cPKg+zQJ
+    EK5g5gCaIuehZBYZpsFqgv3Nx18eERQwYItv2xfkbP6hYoFJ/aaRbYoqRnLrXhEf
+    B6zr46b4GhdJ2hLxXc7KKfBPr3n8U1FM0XJePld6re47Dd5aQUWOxvSlXnCAHLCX
+    LOHdfFrW8YVEG8gRQ3W3A+9+D2KYQq6vYWCJuWtvvoj/79RYCVWttKK+ZUCft1UG
+    Ak2sGfOJq3A3veahrC3Ga6dNiScq/INkEsad2H4HyONo92v+T/m2bhd49CXOExRL
+    +Moj2E26d+cjBeKP+3w2c9/i17o7UaHZ0bHBK2EcrRMpvsHFuo2oMA52JLn4d4pN
+    bQIDAQAB
+    -----END PUBLIC KEY-----
+security:
+  oauth2:
+    resource:
+      jwt:
+        key-uri: http://localhost:8080/oauth/token_key
+    client:
+      client-id: resourceserver
+      client-secret: resourceserversecret

@@ -15,7 +15,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
-    public UserDetailsService userDetailsService(){
+    public UserDetailsService userDetailsService() {
         var userDetailsService = new InMemoryUserDetailsManager();
         var user = User.withUsername("Tom")
                 .password("123456")
@@ -24,8 +24,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         userDetailsService.createUser(user);
         return userDetailsService;
     }
+
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
     }
 

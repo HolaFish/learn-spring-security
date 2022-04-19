@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class AuthorizationConfig extends WebSecurityConfigurerAdapter {
 
 
-    private  final AuthenticationProvider authenticationProvider;
+    private final AuthenticationProvider authenticationProvider;
 
     public AuthorizationConfig(AuthenticationProvider authenticationProvider) {
         this.authenticationProvider = authenticationProvider;
